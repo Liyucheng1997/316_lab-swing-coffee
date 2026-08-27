@@ -1,0 +1,185 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #2a2119;
+  --ink-soft: #6b5d4e;
+  --paper: #fdfbf6;
+  --btn: #3a2a1e;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Instrument Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #b9a88f;
+}
+
+/* ===== 舞台（手机式画面） ===== */
+.stage {
+  position: relative;
+  height: 100dvh;
+  max-width: 460px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background:
+    /* 斜射的阳光光束 */
+    linear-gradient(112deg,
+      rgba(60, 42, 25, .18) 0%,
+      rgba(60, 42, 25, .02) 9%,
+      rgba(255, 252, 244, .55) 16%,
+      rgba(255, 252, 244, .10) 30%,
+      rgba(60, 42, 25, .10) 43%,
+      rgba(255, 252, 244, .42) 55%,
+      rgba(255, 252, 244, .06) 70%,
+      rgba(60, 42, 25, .16) 88%,
+      rgba(60, 42, 25, .24) 100%),
+    /* 石材底色 */
+    radial-gradient(140% 90% at 50% 12%, #e7dbc7 0%, #d9c9af 48%, #c4ae8f 100%);
+}
+@media (min-width: 500px) {
+  .stage {
+    height: min(92dvh, 900px);
+    margin-top: max(2dvh, 12px);
+    border-radius: 42px;
+    box-shadow: 0 40px 90px rgba(50, 35, 18, .45);
+  }
+}
+
+/* 石材纹理裂纹 */
+.stage::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='800'%3E%3Cg stroke='%238a7355' stroke-opacity='.16' fill='none' stroke-width='1'%3E%3Cpath d='M-20 210 C 120 190, 210 260, 340 235 S 480 270, 500 250'/%3E%3Cpath d='M60 -10 C 90 120, 40 260, 95 420 S 60 640, 110 820'/%3E%3Cpath d='M300 -20 C 340 150, 270 300, 330 470 S 300 660, 350 830'/%3E%3Cpath d='M-30 520 C 130 490, 240 560, 380 530 S 470 560, 500 545'/%3E%3Cpath d='M180 90 C 210 140, 160 200, 200 250'/%3E%3C/g%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.brand {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .38em;
+  font-weight: 600;
+  color: rgba(58, 42, 30, .55);
+  z-index: 3;
+}
+
+/* ===== 杯子区域 ===== */
+.cup-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3dvh;
+  min-height: 0;
+}
+.cup-wrap {
+  width: min(290px, 62vw, 46dvh);
+}
+#cupSvg { width: 100%; display: block; overflow: visible; }
+
+/* ===== 底部选择面板 ===== */
+.sheet {
+  position: relative;
+  z-index: 4;
+  background: var(--paper);
+  border-radius: 30px 30px 0 0;
+  padding: 26px 20px calc(20px + env(safe-area-inset-bottom));
+  box-shadow: 0 -18px 50px rgba(60, 42, 25, .18);
+  transform: translateY(0);
+  transition: transform .55s cubic-bezier(.5, 0, .2, 1);
+}
+.sheet.hidden { transform: translateY(112%); }
+
+.sheet-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.carousel {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 12px calc(50% - 55px);
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.card {
+  flex: 0 0 110px;
+  scroll-snap-align: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 0;
+  border-radius: 18px;
+  transition: transform .35s cubic-bezier(.34, 1.4, .5, 1), opacity .3s;
+  transform: scale(.86);
+  opacity: .55;
+}
+.card svg { width: 100%; display: block; filter: drop-shadow(0 8px 10px rgba(60, 42, 25, .18)); }
+.card.selected { transform: scale(1.05); opacity: 1; }
+
+.drink-name {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: .04em;
+  margin: 10px 0 18px;
+  min-height: 1.2em;
+}
+
+.cta {
+  display: block;
+  width: min(240px, 70%);
+  margin: 0 auto;
+  padding: 15px 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--btn);
+  color: #f7f1e8;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .2s;
+  box-shadow: 0 12px 26px rgba(58, 42, 30, .35);
+}
+.cta:active { transform: scale(.96); }
+
+/* ===== 倒完后的胶囊按钮 ===== */
+.pill {
+  position: absolute;
+  left: 50%;
+  bottom: calc(30px + env(safe-area-inset-bottom));
+  transform: translate(-50%, 90px);
+  z-index: 3;
+  padding: 13px 34px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(46, 32, 20, .92);
+  color: #f7f1e8;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .5s cubic-bezier(.34, 1.3, .5, 1), opacity .4s;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, .55), 0 16px 34px rgba(58, 42, 30, .35);
+}
+.pill.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.pill:active { transform: translate(-50%, 0) scale(.95); }

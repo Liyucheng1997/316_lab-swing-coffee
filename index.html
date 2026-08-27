@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Swing Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- 顶部小 logo -->
+  <header class="brand">SWING&nbsp;·&nbsp;COFFEE</header>
+
+  <!-- 杯子 + 制作动画 -->
+  <div class="cup-area">
+    <div class="cup-wrap">
+      <svg id="cupSvg" viewBox="0 0 300 470" overflow="visible" aria-hidden="true">
+        <defs>
+          <!-- 杯子内壁（液体裁剪区） -->
+          <clipPath id="clipCup">
+            <path d="M67 109 L88 409 Q90 424 106 424 L194 424 Q210 424 212 409 L233 109 Z"/>
+          </clipPath>
+          <linearGradient id="milkGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop id="milkStopA" offset="0" stop-color="#f3e9d9"/>
+            <stop id="milkStopB" offset="1" stop-color="#e4d0b2"/>
+          </linearGradient>
+          <linearGradient id="topGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop id="topStopA" offset="0" stop-color="#7a4a2a"/>
+            <stop id="topStopB" offset="1" stop-color="#5a341b"/>
+          </linearGradient>
+          <linearGradient id="blendGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop id="blendStopA" offset="0" stop-color="#5a341b" stop-opacity=".95"/>
+            <stop id="blendStopB" offset="1" stop-color="#5a341b" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#fff" stop-opacity=".34"/>
+            <stop offset=".18" stop-color="#fff" stop-opacity=".05"/>
+            <stop offset=".5"  stop-color="#fff" stop-opacity=".12"/>
+            <stop offset=".82" stop-color="#fff" stop-opacity=".04"/>
+            <stop offset="1"   stop-color="#fff" stop-opacity=".30"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 地面阴影 -->
+        <ellipse cx="150" cy="441" rx="102" ry="12" fill="rgba(90,70,50,.26)" filter="blur(6px)"/>
+
+        <!-- 液体与内容物（被杯壁裁剪） -->
+        <g clip-path="url(#clipCup)" id="liquidLayers">
+          <path id="milkPath" d="" fill="url(#milkGrad)"/>
+          <path id="topPath" d="" fill="url(#topGrad)"/>
+          <rect id="blendRect" x="53" y="0" width="194" height="0" fill="url(#blendGrad)"/>
+          <path id="cremaPath" d="" fill="#c99a5f" opacity="0"/>
+          <g id="deco"></g>
+          <g id="tendrils"></g>
+          <g id="bubbles"></g>
+          <g id="ice"></g>
+        </g>
+
+        <!-- 杯身（透明塑料） -->
+        <path d="M62 102 L85 413 Q86 429 104 429 L196 429 Q214 429 216 413 L238 102 Z"
+              fill="url(#glassGrad)" stroke="rgba(255,255,255,.75)" stroke-width="2.5"/>
+        <!-- 内壁高光 -->
+        <path d="M78 132 L96 388" stroke="rgba(255,255,255,.5)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M222 132 L207 372" stroke="rgba(255,255,255,.35)" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <!-- 杯壁水珠 -->
+        <g fill="rgba(255,255,255,.5)">
+          <circle cx="102" cy="300" r="3"/><circle cx="112" cy="335" r="2.2"/>
+          <circle cx="198" cy="282" r="2.8"/><circle cx="188" cy="356" r="2.2"/>
+        </g>
+
+        <!-- 杯口卷边 -->
+        <rect x="53" y="92" width="194" height="18" rx="9"
+              fill="rgba(252,249,243,.85)" stroke="rgba(255,255,255,.9)" stroke-width="2.5"/>
+
+        <!-- 奶油顶与巧克力碎（冰沙款，盖盖前出现） -->
+        <g id="creamG"></g>
+        <g id="chipsG"></g>
+
+        <!-- 平盖（拿铁款，最后落下） -->
+        <g id="flatLid" opacity="0">
+          <path d="M58 92 L72 65 Q74 58 83 58 L217 58 Q226 58 228 65 L242 92 Z"
+                fill="rgba(250,246,238,.95)" stroke="rgba(140,110,80,.4)" stroke-width="2.5"/>
+          <ellipse cx="150" cy="72" rx="18" ry="5" fill="rgba(70,50,35,.18)"/>
+        </g>
+
+        <!-- 拱形盖（冰沙款，最后落下） -->
+        <g id="domeLid" opacity="0">
+          <path d="M55 92 C55 18 245 18 245 92 Z"
+                fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.8)" stroke-width="2.5"/>
+          <path d="M78 68 C92 42 112 28 140 24" stroke="rgba(255,255,255,.55)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="150" cy="36" rx="14" ry="4.5" fill="rgba(70,50,35,.18)"/>
+        </g>
+
+        <!-- 注入的液流（最上层） -->
+        <g id="streamGroup" style="display:none">
+          <rect id="stream" x="142" y="-1200" width="16" height="0" rx="8" fill="#f3e9d9"/>
+          <rect id="streamSheen" x="142" y="-1200" width="16" height="0" rx="8" fill="rgba(255,255,255,.28)"/>
+        </g>
+        <g id="splash"></g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 出品后的口味胶囊按钮 -->
+  <button class="pill" id="pillBtn" aria-label="重新选择">Vanilla silk</button>
+
+  <!-- 底部选择面板 -->
+  <section class="sheet" id="sheet">
+    <h1 class="sheet-title">What are we swinging today?</h1>
+    <div class="carousel" id="carousel"></div>
+    <p class="drink-name" id="drinkName">Vanilla silk</p>
+    <button class="cta" id="spinBtn">Spin it up</button>
+  </section>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; font-family: "Instrument Sans", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
+    a { color: #8a5a33; } a:hover { color: #6f4023; }
+  </style>
+</helmet>
+<div style="width: 1240px; height: 540px; box-sizing: border-box; padding: 32px 44px; display: flex; flex-direction: column; gap: 18px; background: linear-gradient(112deg, rgba(60,42,25,.10) 0%, rgba(255,252,244,.45) 18%, rgba(255,252,244,.05) 40%, rgba(60,42,25,.08) 62%, rgba(255,252,244,.35) 80%, rgba(60,42,25,.14) 100%), radial-gradient(130% 100% at 50% 0%, #e9decb 0%, #dbcbb0 55%, #c8b294 100%);">
+
+  <div style="display: flex; flex-direction: column; gap: 4px;">
+    <div style="font-size: 20px; font-weight: 600; color: #2a2119;">倒咖啡动画 · 真实分步分镜（以 Vanilla silk 为例）</div>
+    <div style="font-size: 12px; color: #6b5d4e;">制作全程敞口无盖，盖子最后才盖上；Choco chips 走冰沙流程：满杯注入 → 奶油 → 撒碎 → 拱盖</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px;">
+
+    <!-- 步骤 1 落冰 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(253,251,246,.72); border-radius: 16px; padding: 16px 12px 14px;">
+      <svg viewBox="0 0 170 260" width="140" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="s1-cup"><path d="M38 62 L50 232 Q51 240 60 240 L110 240 Q119 240 120 232 L132 62 Z"/></clipPath></defs>
+        <ellipse cx="85" cy="250" rx="58" ry="7" fill="rgba(90,70,50,.22)"/>
+        <g clip-path="url(#s1-cup)">
+          <g fill="rgba(255,255,255,.30)" stroke="rgba(255,255,255,.9)" stroke-width="1.5">
+            <rect x="50" y="86" width="30" height="30" rx="7" transform="rotate(-18 65 101)"/>
+            <rect x="88" y="128" width="26" height="26" rx="6" transform="rotate(22 101 141)"/>
+            <rect x="70" y="196" width="24" height="24" rx="6" transform="rotate(50 82 208)"/>
+          </g>
+          <g stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round">
+            <path d="M65 40 L65 78"/>
+            <path d="M101 70 L101 120"/>
+            <path d="M83 130 L83 188"/>
+          </g>
+        </g>
+        <path d="M35 58 L48 234 Q49 243 59 243 L111 243 Q121 243 122 234 L135 58 Z" fill="rgba(255,255,255,.10)" stroke="rgba(70,50,35,.30)" stroke-width="2"/>
+        <path d="M44 76 L54 218" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="32" y="53" width="106" height="7" rx="3.5" fill="rgba(255,255,255,.7)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+      </svg>
+      <div style="text-align: center;">
+        <div style="font-size: 13px; font-weight: 600; color: #2a2119;">1 · 落冰</div>
+        <div style="font-size: 11px; color: #6b5d4e;">冰块依次坠入弹跳 — 0.5s</div>
+      </div>
+    </div>
+
+    <!-- 步骤 2 注奶 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(253,251,246,.72); border-radius: 16px; padding: 16px 12px 14px;">
+      <svg viewBox="0 0 170 260" width="140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="s2-cup"><path d="M38 62 L50 232 Q51 240 60 240 L110 240 Q119 240 120 232 L132 62 Z"/></clipPath>
+          <linearGradient id="s2-milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e9d9"/><stop offset="1" stop-color="#e4d0b2"/></linearGradient>
+        </defs>
+        <ellipse cx="85" cy="250" rx="58" ry="7" fill="rgba(90,70,50,.22)"/>
+        <g clip-path="url(#s2-cup)">
+          <rect x="30" y="152" width="110" height="92" fill="url(#s2-milk)"/>
+          <g fill="rgba(255,255,255,.30)" stroke="rgba(255,255,255,.9)" stroke-width="1.5">
+            <rect x="50" y="136" width="30" height="30" rx="7" transform="rotate(-10 65 151)"/>
+            <rect x="90" y="144" width="26" height="26" rx="6" transform="rotate(18 103 157)"/>
+          </g>
+        </g>
+        <rect x="80" y="0" width="10" height="152" rx="5" fill="#f6ecdc"/>
+        <path d="M83 6 L83 140" stroke="rgba(255,255,255,.8)" stroke-width="2.5" stroke-linecap="round"/>
+        <g fill="#f6ecdc">
+          <circle cx="70" cy="148" r="2.4"/><circle cx="101" cy="144" r="2"/><circle cx="94" cy="154" r="1.6"/><circle cx="64" cy="158" r="1.6"/>
+        </g>
+        <path d="M35 58 L48 234 Q49 243 59 243 L111 243 Q121 243 122 234 L135 58 Z" fill="rgba(255,255,255,.10)" stroke="rgba(70,50,35,.30)" stroke-width="2"/>
+        <path d="M44 76 L54 218" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="32" y="53" width="106" height="7" rx="3.5" fill="rgba(255,255,255,.7)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+      </svg>
+      <div style="text-align: center;">
+        <div style="font-size: 13px; font-weight: 600; color: #2a2119;">2 · 注奶</div>
+        <div style="font-size: 11px; color: #6b5d4e;">奶液升至七分满，冰块上浮 — 1.4s</div>
+      </div>
+    </div>
+
+    <!-- 步骤 3 注入浓缩 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(253,251,246,.72); border-radius: 16px; padding: 16px 12px 14px;">
+      <svg viewBox="0 0 170 260" width="140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="s3-cup"><path d="M38 62 L50 232 Q51 240 60 240 L110 240 Q119 240 120 232 L132 62 Z"/></clipPath>
+          <linearGradient id="s3-milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e9d9"/><stop offset="1" stop-color="#e4d0b2"/></linearGradient>
+        </defs>
+        <ellipse cx="85" cy="250" rx="58" ry="7" fill="rgba(90,70,50,.22)"/>
+        <g clip-path="url(#s3-cup)">
+          <rect x="30" y="104" width="110" height="140" fill="url(#s3-milk)"/>
+          <rect x="30" y="90" width="110" height="16" fill="#6b3d1f"/>
+          <path d="M74 106 C70 122 78 132 73 148" stroke="#6b3d1f" stroke-width="4" fill="none" opacity=".55" stroke-linecap="round"/>
+          <path d="M98 108 C102 124 94 136 100 152" stroke="#6b3d1f" stroke-width="3" fill="none" opacity=".45" stroke-linecap="round"/>
+          <g fill="rgba(255,255,255,.30)" stroke="rgba(255,255,255,.9)" stroke-width="1.5">
+            <rect x="48" y="84" width="30" height="30" rx="7" transform="rotate(-10 63 99)"/>
+            <rect x="92" y="88" width="26" height="26" rx="6" transform="rotate(18 105 101)"/>
+          </g>
+        </g>
+        <rect x="81" y="0" width="8" height="92" rx="4" fill="#5a341b"/>
+        <path d="M84 6 L84 82" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
+        <g fill="#8a5a33">
+          <circle cx="72" cy="88" r="2"/><circle cx="99" cy="86" r="1.7"/>
+        </g>
+        <path d="M35 58 L48 234 Q49 243 59 243 L111 243 Q121 243 122 234 L135 58 Z" fill="rgba(255,255,255,.10)" stroke="rgba(70,50,35,.30)" stroke-width="2"/>
+        <path d="M44 76 L54 218" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="32" y="53" width="106" height="7" rx="3.5" fill="rgba(255,255,255,.7)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+      </svg>
+      <div style="text-align: center;">
+        <div style="font-size: 13px; font-weight: 600; color: #2a2119;">3 · 注入浓缩</div>
+        <div style="font-size: 11px; color: #6b5d4e;">咖啡浮在奶层上，须状下沉 — 1.0s</div>
+      </div>
+    </div>
+
+    <!-- 步骤 4 分层晕染 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(253,251,246,.72); border-radius: 16px; padding: 16px 12px 14px;">
+      <svg viewBox="0 0 170 260" width="140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="s4-cup"><path d="M38 62 L50 232 Q51 240 60 240 L110 240 Q119 240 120 232 L132 62 Z"/></clipPath>
+          <linearGradient id="s4-milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e9d9"/><stop offset="1" stop-color="#e4d0b2"/></linearGradient>
+          <linearGradient id="s4-esp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a4a2a"/><stop offset="1" stop-color="#5a341b"/></linearGradient>
+          <linearGradient id="s4-blend" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a341b" stop-opacity=".95"/><stop offset="1" stop-color="#5a341b" stop-opacity="0"/></linearGradient>
+        </defs>
+        <ellipse cx="85" cy="250" rx="58" ry="7" fill="rgba(90,70,50,.22)"/>
+        <g clip-path="url(#s4-cup)">
+          <rect x="30" y="64" width="110" height="180" fill="url(#s4-milk)"/>
+          <rect x="30" y="64" width="110" height="42" fill="url(#s4-esp)"/>
+          <rect x="30" y="100" width="110" height="52" fill="url(#s4-blend)"/>
+          <path d="M62 108 C58 124 66 134 61 154" stroke="#5a341b" stroke-width="4" fill="none" opacity=".45" stroke-linecap="round"/>
+          <path d="M104 110 C108 126 100 140 106 160" stroke="#5a341b" stroke-width="3" fill="none" opacity=".35" stroke-linecap="round"/>
+          <rect x="30" y="64" width="110" height="7" fill="#c99a5f" opacity=".9"/>
+          <g fill="#e8c48e"><circle cx="60" cy="67" r="1.5"/><circle cx="88" cy="66" r="1.3"/><circle cx="112" cy="68" r="1.4"/></g>
+          <g fill="rgba(255,255,255,.35)">
+            <circle cx="66" cy="150" r="1.8"/><circle cx="96" cy="170" r="1.5"/><circle cx="78" cy="130" r="1.4"/>
+          </g>
+          <g fill="rgba(255,255,255,.30)" stroke="rgba(255,255,255,.9)" stroke-width="1.5">
+            <rect x="50" y="70" width="30" height="30" rx="7" transform="rotate(-12 65 85)"/>
+            <rect x="90" y="66" width="26" height="26" rx="6" transform="rotate(14 103 79)"/>
+          </g>
+        </g>
+        <path d="M35 58 L48 234 Q49 243 59 243 L111 243 Q121 243 122 234 L135 58 Z" fill="rgba(255,255,255,.10)" stroke="rgba(70,50,35,.30)" stroke-width="2"/>
+        <path d="M44 76 L54 218" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="32" y="53" width="106" height="7" rx="3.5" fill="rgba(255,255,255,.7)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+      </svg>
+      <div style="text-align: center;">
+        <div style="font-size: 13px; font-weight: 600; color: #2a2119;">4 · 分层晕染</div>
+        <div style="font-size: 11px; color: #6b5d4e;">晕染带缓慢下渗，气泡上浮 — 0.9s</div>
+      </div>
+    </div>
+
+    <!-- 步骤 5 盖盖出品 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(253,251,246,.72); border-radius: 16px; padding: 16px 12px 14px;">
+      <svg viewBox="0 0 170 260" width="140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="s5-cup"><path d="M38 62 L50 232 Q51 240 60 240 L110 240 Q119 240 120 232 L132 62 Z"/></clipPath>
+          <linearGradient id="s5-milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e9d9"/><stop offset="1" stop-color="#e4d0b2"/></linearGradient>
+          <linearGradient id="s5-esp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a4a2a"/><stop offset="1" stop-color="#5a341b"/></linearGradient>
+          <linearGradient id="s5-blend" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a341b" stop-opacity=".95"/><stop offset="1" stop-color="#5a341b" stop-opacity="0"/></linearGradient>
+        </defs>
+        <ellipse cx="85" cy="250" rx="58" ry="7" fill="rgba(90,70,50,.22)"/>
+        <g clip-path="url(#s5-cup)">
+          <rect x="30" y="64" width="110" height="180" fill="url(#s5-milk)"/>
+          <rect x="30" y="64" width="110" height="42" fill="url(#s5-esp)"/>
+          <rect x="30" y="100" width="110" height="48" fill="url(#s5-blend)"/>
+          <rect x="30" y="64" width="110" height="7" fill="#c99a5f" opacity=".9"/>
+          <g fill="rgba(255,255,255,.30)" stroke="rgba(255,255,255,.9)" stroke-width="1.5">
+            <rect x="50" y="72" width="30" height="30" rx="7" transform="rotate(-12 65 87)"/>
+            <rect x="90" y="68" width="26" height="26" rx="6" transform="rotate(14 103 81)"/>
+          </g>
+        </g>
+        <path d="M35 58 L48 234 Q49 243 59 243 L111 243 Q121 243 122 234 L135 58 Z" fill="rgba(255,255,255,.10)" stroke="rgba(70,50,35,.30)" stroke-width="2"/>
+        <path d="M44 76 L54 218" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="30" y="52" width="110" height="10" rx="5" fill="rgba(252,249,243,.9)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+        <g transform="translate(0 -16)">
+          <path d="M33 52 L41 37 Q42 33 47 33 L123 33 Q128 33 129 37 L137 52 Z" fill="rgba(250,246,238,.95)" stroke="rgba(70,50,35,.25)" stroke-width="1.5"/>
+          <ellipse cx="85" cy="41" rx="10" ry="3" fill="rgba(70,50,35,.18)"/>
+        </g>
+        <g stroke="rgba(70,50,35,.45)" stroke-width="2" stroke-linecap="round">
+          <path d="M52 44 L52 52 M49 49 L52 53 L55 49"/>
+          <path d="M118 44 L118 52 M115 49 L118 53 L121 49"/>
+        </g>
+      </svg>
+      <div style="text-align: center;">
+        <div style="font-size: 13px; font-weight: 600; color: #2a2119;">5 · 盖盖出品</div>
+        <div style="font-size: 11px; color: #6b5d4e;">盖子落下压合，弹出口味标签 — 0.4s</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
